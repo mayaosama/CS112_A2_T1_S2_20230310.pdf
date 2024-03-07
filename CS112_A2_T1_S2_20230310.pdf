@@ -1,0 +1,47 @@
+#Author:Maya Osama El_Sayed Adb El_Allem
+#ID: 20230310
+#Faculty of Computers and artificial intelligence
+#Structure Programing (CS112)
+#Assignment : 2
+#Task number : 1
+
+
+your name, ID, FCAI name, course name, assignment and task number.
+def check_win(player_numbers):
+    # All possible combinations of 3 numbers that sum up to 15
+    win_combinations = [[1, 5, 9], [1, 6, 8], [2, 4, 9], [2, 5, 8], [2, 6, 7], [3, 4, 8], [3, 5, 7], [4, 5, 6]]
+    
+    for combination in win_combinations:
+        if set(combination).issubset(set(player_numbers)):
+            return True
+    return False
+
+# Initialize the game board
+game_board = list(range(1, 10))
+
+# Initialize the players' numbers
+player1_numbers = []
+player2_numbers = []
+
+# Game loop
+while game_board:
+    # Player 1's turn
+    player1_choice = int(input("Player 1, choose a number: "))
+    game_board.remove(player1_choice)
+    player1_numbers.append(player1_choice)
+    if check_win(player1_numbers):
+        print("Player 1 wins!")
+        break
+
+    # Check if game board is empty
+    if not game_board:
+        print("The game is a draw.")
+        break
+
+    # Player 2's turn
+    player2_choice = int(input("Player 2, choose a number: "))
+    game_board.remove(player2_choice)
+    player2_numbers.append(player2_choice)
+    if check_win(player2_numbers):
+        print("Player 2 wins!")
+        break
